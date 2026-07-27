@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/theme/spacing.dart';
+import 'package:systems_studio/theme/spacing.dart';
 
 class BreachICloudDetail extends StatelessWidget {
   const BreachICloudDetail({super.key});
@@ -15,8 +15,10 @@ class BreachICloudDetail extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("The iCloud Celebrity Hack",
-                style: Theme.of(context).textTheme.headlineMedium),
+            Text(
+              "The iCloud Celebrity Hack",
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
             SizedBox(height: spacing.md),
 
             Text(
@@ -27,8 +29,10 @@ class BreachICloudDetail extends StatelessWidget {
 
             SizedBox(height: spacing.xl),
 
-            Text("🔓 What Went Wrong",
-                style: Theme.of(context).textTheme.titleLarge),
+            Text(
+              "🔓 What Went Wrong",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
             SizedBox(height: spacing.sm),
 
             Text(
@@ -39,8 +43,10 @@ class BreachICloudDetail extends StatelessWidget {
 
             SizedBox(height: spacing.lg),
 
-            Text("⚡ Attack Method",
-                style: Theme.of(context).textTheme.titleLarge),
+            Text(
+              "⚡ Attack Method",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
             SizedBox(height: spacing.sm),
 
             Text(
@@ -52,8 +58,10 @@ class BreachICloudDetail extends StatelessWidget {
 
             SizedBox(height: spacing.lg),
 
-            Text("🧠 Lessons Learned",
-                style: Theme.of(context).textTheme.titleLarge),
+            Text(
+              "🧠 Lessons Learned",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
             SizedBox(height: spacing.sm),
 
             Text(

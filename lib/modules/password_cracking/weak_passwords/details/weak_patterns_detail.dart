@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/theme/spacing.dart';
+import 'package:systems_studio/theme/spacing.dart';
 
 class WeakPatternsDetail extends StatelessWidget {
   const WeakPatternsDetail({super.key});
@@ -29,7 +29,10 @@ class WeakPatternsDetail extends StatelessWidget {
 
             SizedBox(height: spacing.xl),
 
-            Text("Common Patterns", style: Theme.of(context).textTheme.titleMedium),
+            Text(
+              "Common Patterns",
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
             SizedBox(height: spacing.sm),
             Text(
               "• Adding '1' or '!' at the end\n"

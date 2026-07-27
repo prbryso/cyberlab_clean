@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/theme/spacing.dart';
+import 'package:systems_studio/theme/spacing.dart';
 import 'dart:math';
 
 class PasswordCrackTimeScreen extends StatefulWidget {
@@ -37,7 +37,8 @@ class _PasswordCrackTimeScreenState extends State<PasswordCrackTimeScreen> {
     if (seconds < 60) return "${seconds.toStringAsFixed(1)} seconds";
     if (seconds < 3600) return "${(seconds / 60).toStringAsFixed(1)} minutes";
     if (seconds < 86400) return "${(seconds / 3600).toStringAsFixed(1)} hours";
-    if (seconds < 31536000) return "${(seconds / 86400).toStringAsFixed(1)} days";
+    if (seconds < 31536000)
+      return "${(seconds / 86400).toStringAsFixed(1)} days";
 
     return "${(seconds / 31536000).toStringAsFixed(1)} years";
   }
@@ -57,9 +58,7 @@ class _PasswordCrackTimeScreenState extends State<PasswordCrackTimeScreen> {
     final spacing = CyberLabSpacing.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Crack Time Estimator"),
-      ),
+      appBar: AppBar(title: const Text("Crack Time Estimator")),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(spacing.xl),
         child: Center(
@@ -116,9 +115,7 @@ class _PasswordCrackTimeScreenState extends State<PasswordCrackTimeScreen> {
                         SizedBox(height: spacing.sm),
                         Text(
                           crackTime,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headlineSmall
+                          style: Theme.of(context).textTheme.headlineSmall
                               ?.copyWith(color: strengthColor),
                         ),
                         SizedBox(height: spacing.md),

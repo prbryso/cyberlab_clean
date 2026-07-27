@@ -19,12 +19,6 @@ class CyberLabSpacing {
 
   /// Access spacing from the widget tree.
   static CyberLabSpacing of(BuildContext context) {
-    return const CyberLabSpacing(
-      xs: 4,
-      sm: 8,
-      md: 12,
-      lg: 20,
-      xl: 32,
-    );
+    return const CyberLabSpacing(xs: 4, sm: 8, md: 12, lg: 20, xl: 32);
   }
 }

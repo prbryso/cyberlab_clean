@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/ui/layout/app_scaffold.dart';
-import 'package:cyber_lab/ui/components/button.dart';
-import 'package:cyber_lab/modules/password_cracking/widgets/strength_meter.dart';
-import 'package:cyber_lab/modules/password_cracking/logic/password_analyzer.dart';
+import 'package:systems_studio/ui/layout/app_scaffold.dart';
+import 'package:systems_studio/ui/components/button.dart';
+import 'package:systems_studio/modules/password_cracking/widgets/strength_meter.dart';
+import 'package:systems_studio/modules/password_cracking/logic/password_analyzer.dart';
 
 class PasswordSimulationScreen extends StatefulWidget {
   const PasswordSimulationScreen({super.key});
@@ -25,9 +25,7 @@ class _PasswordSimulationScreenState extends State<PasswordSimulationScreen> {
         children: [
           TextField(
             controller: _controller,
-            decoration: const InputDecoration(
-              labelText: "Enter a password",
-            ),
+            decoration: const InputDecoration(labelText: "Enter a password"),
             obscureText: true,
           ),
 

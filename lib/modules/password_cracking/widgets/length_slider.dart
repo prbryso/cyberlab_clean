@@ -72,10 +72,7 @@ class LengthSlider extends StatelessWidget {
               "Length: ${length.toInt()}",
               style: theme.textTheme.bodyMedium,
             ),
-            Text(
-              "Crack time: $crackTime",
-              style: theme.textTheme.bodyMedium,
-            ),
+            Text("Crack time: $crackTime", style: theme.textTheme.bodyMedium),
           ],
         ),
 

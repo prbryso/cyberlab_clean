@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/theme/spacing.dart';
+import 'package:systems_studio/theme/spacing.dart';
 
 import 'length_slider.dart';
 import 'charset_toggle.dart';

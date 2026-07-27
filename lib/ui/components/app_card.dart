@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/theme/colors.dart';
-import 'package:cyber_lab/theme/spacing.dart';
-import 'package:cyber_lab/ui/theme/app_spacing.dart';
+import 'package:systems_studio/theme/colors.dart';
+import 'package:systems_studio/theme/spacing.dart';
+import 'package:systems_studio/ui/theme/app_spacing.dart';
 
 class AppCard extends StatelessWidget {
   final Widget child;
   final EdgeInsets? padding;
   final VoidCallback? onTap;
 
-  const AppCard({
-    super.key,
-    required this.child,
-    this.padding,
-    this.onTap,
-  });
+  const AppCard({super.key, required this.child, this.padding, this.onTap});
 
   @override
   Widget build(BuildContext context) {

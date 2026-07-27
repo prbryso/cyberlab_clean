@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/theme/spacing.dart';
+import 'package:systems_studio/theme/spacing.dart';
 import '../../widgets/password_strength_lab.dart';
 import '../../widgets/passphrase_generator.dart';
 import '../../widgets/passphrase_builder.dart';
@@ -10,21 +10,15 @@ import '../../widgets/real_world_cases.dart';
 import '../../widgets/common_password_mistakes.dart';
 import '../../widgets/password_strength_workbench.dart';
 
-
-
-
-
 class PasswordWeakScreenOld extends StatelessWidget {
-  const PasswordWeakScreenOld ({super.key});
+  const PasswordWeakScreenOld({super.key});
 
   @override
   Widget build(BuildContext context) {
     final spacing = CyberLabSpacing.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Weak Passwords"),
-      ),
+      appBar: AppBar(title: const Text("Weak Passwords")),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(spacing.xl),
         child: Center(
@@ -63,8 +57,8 @@ class PasswordWeakScreenOld extends StatelessWidget {
                 Text(
                   "Common Weak Passwords",
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 SizedBox(height: spacing.md),
 
@@ -86,8 +80,8 @@ class PasswordWeakScreenOld extends StatelessWidget {
                 Text(
                   "Why These Passwords Are Weak",
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 SizedBox(height: spacing.md),
 
@@ -101,8 +95,8 @@ class PasswordWeakScreenOld extends StatelessWidget {
                 Text(
                   "Why Length Matters",
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 SizedBox(height: spacing.md),
 
@@ -124,8 +118,8 @@ class PasswordWeakScreenOld extends StatelessWidget {
                 Text(
                   "Passphrases: Length Made Easy",
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 SizedBox(height: spacing.sm),
 
@@ -156,10 +150,18 @@ class PasswordWeakScreenOld extends StatelessWidget {
                 ),
                 SizedBox(height: spacing.sm),
 
-                const _LimitedTryBullet("They are long — usually 20–30+ characters"),
-                const _LimitedTryBullet("They create massive search spaces for attackers"),
-                const _LimitedTryBullet("They are easier to remember than complex symbols"),
-                const _LimitedTryBullet("They avoid predictable patterns like names or dates"),
+                const _LimitedTryBullet(
+                  "They are long — usually 20–30+ characters",
+                ),
+                const _LimitedTryBullet(
+                  "They create massive search spaces for attackers",
+                ),
+                const _LimitedTryBullet(
+                  "They are easier to remember than complex symbols",
+                ),
+                const _LimitedTryBullet(
+                  "They avoid predictable patterns like names or dates",
+                ),
 
                 SizedBox(height: spacing.md),
 
@@ -175,7 +177,6 @@ class PasswordWeakScreenOld extends StatelessWidget {
                 SizedBox(height: spacing.xl),
                 const PassphraseBuilder(),
 
-
                 // ---------------------------------------------------------
                 // LIMITED TRIES
                 // ---------------------------------------------------------
@@ -184,8 +185,8 @@ class PasswordWeakScreenOld extends StatelessWidget {
                 Text(
                   "Limited Tries: Real‑World Protection",
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 SizedBox(height: spacing.md),
 
@@ -200,10 +201,9 @@ class PasswordWeakScreenOld extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: Theme.of(context)
-                        .colorScheme
-                        .surfaceVariant
-                        .withOpacity(0.4),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.surfaceVariant.withOpacity(0.4),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Column(
@@ -211,26 +211,29 @@ class PasswordWeakScreenOld extends StatelessWidget {
                     children: [
                       Text(
                         "Common Limited‑Try Protections:",
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
+                        style: Theme.of(context).textTheme.titleMedium
+                            ?.copyWith(fontWeight: FontWeight.bold),
                       ),
                       SizedBox(height: spacing.sm),
 
                       SizedBox(height: spacing.xl),
                       LockoutSimulator(),
 
-
                       const _LimitedTryBullet(
-                          "Account lockout after several failed attempts"),
+                        "Account lockout after several failed attempts",
+                      ),
                       const _LimitedTryBullet(
-                          "Increasing delay between attempts (cooldown timer)"),
+                        "Increasing delay between attempts (cooldown timer)",
+                      ),
                       const _LimitedTryBullet(
-                          "CAPTCHA challenges after repeated failures"),
+                        "CAPTCHA challenges after repeated failures",
+                      ),
                       const _LimitedTryBullet(
-                          "Temporary IP blocking or rate limiting"),
+                        "Temporary IP blocking or rate limiting",
+                      ),
                       const _LimitedTryBullet(
-                          "Multi‑factor authentication required after failures"),
+                        "Multi‑factor authentication required after failures",
+                      ),
 
                       SizedBox(height: spacing.lg),
 
@@ -249,15 +252,13 @@ class PasswordWeakScreenOld extends StatelessWidget {
                       SizedBox(height: spacing.xl),
                       const PasswordStrengthWorkbench(),
 
-
                       // ---------------------------------------------------------
                       // CAPTCHA EXPLANATION
                       // ---------------------------------------------------------
                       Text(
                         "What Is CAPTCHA?",
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
+                        style: Theme.of(context).textTheme.titleMedium
+                            ?.copyWith(fontWeight: FontWeight.bold),
                       ),
                       SizedBox(height: spacing.sm),
 
@@ -277,13 +278,17 @@ class PasswordWeakScreenOld extends StatelessWidget {
                       SizedBox(height: spacing.sm),
 
                       const _LimitedTryBullet(
-                          "Selecting images that match a prompt (e.g., 'select all crosswalks')"),
+                        "Selecting images that match a prompt (e.g., 'select all crosswalks')",
+                      ),
                       const _LimitedTryBullet(
-                          "Typing distorted letters or numbers"),
+                        "Typing distorted letters or numbers",
+                      ),
                       const _LimitedTryBullet(
-                          "Checking a box labeled 'I'm not a robot'"),
+                        "Checking a box labeled 'I'm not a robot'",
+                      ),
                       const _LimitedTryBullet(
-                          "Solving simple logic or pattern puzzles"),
+                        "Solving simple logic or pattern puzzles",
+                      ),
                     ],
                   ),
                 ),
@@ -296,8 +301,8 @@ class PasswordWeakScreenOld extends StatelessWidget {
                 Text(
                   "What Is the “Full Charset”?",
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 SizedBox(height: spacing.sm),
 
@@ -312,14 +317,22 @@ class PasswordWeakScreenOld extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("• Lowercase letters (a–z)",
-                        style: Theme.of(context).textTheme.bodyLarge),
-                    Text("• Uppercase letters (A–Z)",
-                        style: Theme.of(context).textTheme.bodyLarge),
-                    Text("• Numbers (0–9)",
-                        style: Theme.of(context).textTheme.bodyLarge),
-                    Text("• Common symbols (! @ # \$ % ^ & * …)",
-                        style: Theme.of(context).textTheme.bodyLarge),
+                    Text(
+                      "• Lowercase letters (a–z)",
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    Text(
+                      "• Uppercase letters (A–Z)",
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    Text(
+                      "• Numbers (0–9)",
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    Text(
+                      "• Common symbols (! @ # \$ % ^ & * …)",
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
                   ],
                 ),
 
@@ -331,8 +344,8 @@ class PasswordWeakScreenOld extends StatelessWidget {
                 Text(
                   "How Do We Calculate the Number of Combinations?",
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
 
                 SizedBox(height: spacing.sm),
@@ -348,9 +361,9 @@ class PasswordWeakScreenOld extends StatelessWidget {
                 Text(
                   "    (number of possible characters) ^ (password length)",
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        fontFamily: "monospace",
-                        fontWeight: FontWeight.bold,
-                      ),
+                    fontFamily: "monospace",
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
 
                 SizedBox(height: spacing.md),
@@ -388,8 +401,8 @@ class PasswordWeakScreenOld extends StatelessWidget {
                 Text(
                   "Explore Password Strength",
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
 
                 SizedBox(height: spacing.md),
@@ -528,9 +541,7 @@ class _LengthTable extends StatelessWidget {
           3: FlexColumnWidth(1.2),
         },
         border: TableBorder.symmetric(
-          inside: BorderSide(
-            color: theme.colorScheme.outline.withOpacity(0.3),
-          ),
+          inside: BorderSide(color: theme.colorScheme.outline.withOpacity(0.3)),
         ),
         children: [
           TableRow(
@@ -596,12 +607,7 @@ class _LimitedTryBullet extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text("• "),
-          Expanded(
-            child: Text(
-              text,
-              style: theme.textTheme.bodyLarge,
-            ),
-          ),
+          Expanded(child: Text(text, style: theme.textTheme.bodyLarge)),
         ],
       ),
     );

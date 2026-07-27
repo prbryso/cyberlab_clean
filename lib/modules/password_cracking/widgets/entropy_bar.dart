@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 class EntropyBar extends StatelessWidget {
   final double score; // expected range: 0–100
 
-  const EntropyBar({
-    super.key,
-    required this.score,
-  });
+  const EntropyBar({super.key, required this.score});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     // Color transitions: red → orange → green
-    final Color barColor =
-        score < 30 ? Colors.red : score < 60 ? Colors.orange : Colors.green;
+    final Color barColor = score < 30
+        ? Colors.red
+        : score < 60
+        ? Colors.orange
+        : Colors.green;
 
     return Container(
       height: 14,

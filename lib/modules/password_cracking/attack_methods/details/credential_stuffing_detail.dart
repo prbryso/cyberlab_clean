@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/theme/spacing.dart';
+import 'package:systems_studio/theme/spacing.dart';
 
 class CredentialStuffingDetail extends StatelessWidget {
   const CredentialStuffingDetail({super.key});
@@ -9,9 +9,7 @@ class CredentialStuffingDetail extends StatelessWidget {
     final spacing = CyberLabSpacing.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Credential Stuffing"),
-      ),
+      appBar: AppBar(title: const Text("Credential Stuffing")),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(spacing.xl),
         child: Column(

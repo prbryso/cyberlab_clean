@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/theme/spacing.dart';
+import 'package:systems_studio/theme/spacing.dart';
 
 class PasswordManagerScreen extends StatelessWidget {
   const PasswordManagerScreen({super.key});
@@ -9,9 +9,7 @@ class PasswordManagerScreen extends StatelessWidget {
     final spacing = CyberLabSpacing.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Password Managers"),
-      ),
+      appBar: AppBar(title: const Text("Password Managers")),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(spacing.xl),
         child: Center(
@@ -86,7 +84,7 @@ class PasswordManagerScreen extends StatelessWidget {
 
                 SizedBox(height: spacing.xl * 2),
 
-               Align(
+                Align(
                   alignment: Alignment.centerRight,
                   child: FilledButton(
                     onPressed: () {
@@ -134,10 +132,7 @@ class _ManagerCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
+                Text(title, style: Theme.of(context).textTheme.titleMedium),
                 SizedBox(height: spacing.sm),
                 Text(
                   description,

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/theme/colors.dart';
-import 'package:cyber_lab/theme/typography.dart';
-import 'package:cyber_lab/theme/spacing.dart';
-import 'app_card.dart';
+
+import 'package:systems_studio/theme/colors.dart';
+import 'package:systems_studio/theme/spacing.dart';
+import 'package:systems_studio/theme/typography.dart';
+import 'package:systems_studio/ui/components/app_card.dart';
 
 class SelectableCard extends StatelessWidget {
   final String label;
@@ -18,16 +19,18 @@ class SelectableCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final spacing = CyberLabSpacing.of(context);
+
     return AppCard(
       onTap: onTap,
-      padding: const EdgeInsets.all(AppSpacing.md),
+      padding: EdgeInsets.all(spacing.md),
       child: Row(
         children: [
           Icon(
             selected ? Icons.radio_button_checked : Icons.radio_button_off,
             color: selected ? AppColors.primary : AppColors.textMuted,
           ),
-          const SizedBox(width: AppSpacing.md),
+          SizedBox(width: spacing.md),
           Expanded(
             child: Text(
               label,

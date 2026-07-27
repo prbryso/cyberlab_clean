@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/theme/spacing.dart';
+import 'package:systems_studio/theme/spacing.dart';
 
 class BruteForceDetail extends StatelessWidget {
   const BruteForceDetail({super.key});
@@ -9,9 +9,7 @@ class BruteForceDetail extends StatelessWidget {
     final spacing = CyberLabSpacing.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Brute Force Attacks"),
-      ),
+      appBar: AppBar(title: const Text("Brute Force Attacks")),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(spacing.xl),
         child: Column(

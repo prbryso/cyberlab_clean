@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/theme/spacing.dart';
+import 'package:systems_studio/theme/spacing.dart';
 
 import 'details/breach_linkedin_detail.dart';
 import 'details/breach_adobe_detail.dart';
@@ -159,14 +159,14 @@ class _BreachCard extends StatelessWidget {
               children: [
                 Text(title, style: Theme.of(context).textTheme.titleMedium),
                 SizedBox(height: spacing.sm),
-                Text(description,
-                    style: Theme.of(context).textTheme.bodyMedium),
+                Text(
+                  description,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
                 SizedBox(height: spacing.md),
                 TextButton(
                   onPressed: onMoreDetails,
-                  style: TextButton.styleFrom(
-                    foregroundColor: Colors.red,
-                  ),
+                  style: TextButton.styleFrom(foregroundColor: Colors.red),
                   child: const Text(
                     "More details",
                     style: TextStyle(fontWeight: FontWeight.bold),

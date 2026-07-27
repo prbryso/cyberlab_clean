@@ -43,15 +43,16 @@ class _PasswordStrengthWorkbenchState extends State<PasswordStrengthWorkbench> {
     if (seconds < 60) return "${seconds.toStringAsFixed(1)} sec";
     if (seconds < 3600) return "${(seconds / 60).toStringAsFixed(1)} min";
     if (seconds < 86400) return "${(seconds / 3600).toStringAsFixed(1)} hr";
-    if (seconds < 31536000) return "${(seconds / 86400).toStringAsFixed(1)} days";
+    if (seconds < 31536000)
+      return "${(seconds / 86400).toStringAsFixed(1)} days";
     return "${(seconds / 31536000).toStringAsFixed(1)} yrs";
   }
 
   double get guesses => pow(2, entropyBits).toDouble();
 
-  String get onlineTime => formatTime(guesses / 1);          // 1 guess/sec
-  String get offlineTime => formatTime(guesses / 1e10);      // 10B/sec
-  String get gpuTime => formatTime(guesses / 1e12);          // 1T/sec
+  String get onlineTime => formatTime(guesses / 1); // 1 guess/sec
+  String get offlineTime => formatTime(guesses / 1e10); // 10B/sec
+  String get gpuTime => formatTime(guesses / 1e12); // 1T/sec
 
   // Strength label
   String get strengthLabel {
@@ -178,10 +179,10 @@ class _PasswordStrengthWorkbenchState extends State<PasswordStrengthWorkbench> {
                 color: password.contains(" ")
                     ? Colors.blue
                     : entropyBits < 30
-                        ? Colors.red
-                        : entropyBits < 60
-                            ? Colors.orange
-                            : Colors.green,
+                    ? Colors.red
+                    : entropyBits < 60
+                    ? Colors.orange
+                    : Colors.green,
                 borderRadius: BorderRadius.circular(8),
               ),
             ),
@@ -190,32 +191,30 @@ class _PasswordStrengthWorkbenchState extends State<PasswordStrengthWorkbench> {
 
         const SizedBox(height: 24),
 
-      if (password.isEmpty)
-        Container(
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: theme.colorScheme.surfaceVariant.withOpacity(0.4),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "🔍 Waiting for input…",
-                style: theme.textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
+        if (password.isEmpty)
+          Container(
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.surfaceVariant.withOpacity(0.4),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "🔍 Waiting for input…",
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                "Type a password above to see entropy, crack times, patterns, and recommendations.",
-                style: theme.textTheme.bodyLarge,
-              ),
-            ],
+                const SizedBox(height: 8),
+                Text(
+                  "Type a password above to see entropy, crack times, patterns, and recommendations.",
+                  style: theme.textTheme.bodyLarge,
+                ),
+              ],
+            ),
           ),
-        ),
-
-
 
         if (password.isNotEmpty)
           Column(
@@ -231,10 +230,12 @@ class _PasswordStrengthWorkbenchState extends State<PasswordStrengthWorkbench> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Character Set Breakdown",
-                        style: theme.textTheme.titleSmall?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        )),
+                    Text(
+                      "Character Set Breakdown",
+                      style: theme.textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     const SizedBox(height: 12),
                     checkRow("Lowercase (a–z)", hasLower, theme),
                     checkRow("Uppercase (A–Z)", hasUpper, theme),
@@ -242,8 +243,10 @@ class _PasswordStrengthWorkbenchState extends State<PasswordStrengthWorkbench> {
                     checkRow("Symbols", hasSymbol, theme),
                     checkRow("Spaces", hasSpace, theme),
                     const SizedBox(height: 12),
-                    Text("Charset size: $charsetSize",
-                        style: theme.textTheme.bodyLarge),
+                    Text(
+                      "Charset size: $charsetSize",
+                      style: theme.textTheme.bodyLarge,
+                    ),
                   ],
                 ),
               ),
@@ -260,13 +263,17 @@ class _PasswordStrengthWorkbenchState extends State<PasswordStrengthWorkbench> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Entropy Analysis",
-                        style: theme.textTheme.titleSmall?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        )),
+                    Text(
+                      "Entropy Analysis",
+                      style: theme.textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     const SizedBox(height: 12),
-                    Text("Entropy: ${entropyBits.toStringAsFixed(1)} bits",
-                        style: theme.textTheme.bodyLarge),
+                    Text(
+                      "Entropy: ${entropyBits.toStringAsFixed(1)} bits",
+                      style: theme.textTheme.bodyLarge,
+                    ),
                     const SizedBox(height: 8),
                     Text(
                       "Formula: entropy = length × log₂(charset)\n"
@@ -291,17 +298,25 @@ class _PasswordStrengthWorkbenchState extends State<PasswordStrengthWorkbench> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Crack Time (Different Attack Models)",
-                        style: theme.textTheme.titleSmall?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        )),
+                    Text(
+                      "Crack Time (Different Attack Models)",
+                      style: theme.textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     const SizedBox(height: 12),
-                    Text("Online attack (1/sec): $onlineTime",
-                        style: theme.textTheme.bodyLarge),
-                    Text("Offline attack (10B/sec): $offlineTime",
-                        style: theme.textTheme.bodyLarge),
-                    Text("GPU cluster (1T/sec): $gpuTime",
-                        style: theme.textTheme.bodyLarge),
+                    Text(
+                      "Online attack (1/sec): $onlineTime",
+                      style: theme.textTheme.bodyLarge,
+                    ),
+                    Text(
+                      "Offline attack (10B/sec): $offlineTime",
+                      style: theme.textTheme.bodyLarge,
+                    ),
+                    Text(
+                      "GPU cluster (1T/sec): $gpuTime",
+                      style: theme.textTheme.bodyLarge,
+                    ),
                   ],
                 ),
               ),
@@ -319,10 +334,12 @@ class _PasswordStrengthWorkbenchState extends State<PasswordStrengthWorkbench> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Detected Patterns",
-                          style: theme.textTheme.titleSmall?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          )),
+                      Text(
+                        "Detected Patterns",
+                        style: theme.textTheme.titleSmall?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                       const SizedBox(height: 12),
                       for (final p in patterns)
                         Text("• $p", style: theme.textTheme.bodyLarge),
@@ -343,10 +360,12 @@ class _PasswordStrengthWorkbenchState extends State<PasswordStrengthWorkbench> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Recommendations",
-                          style: theme.textTheme.titleSmall?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          )),
+                      Text(
+                        "Recommendations",
+                        style: theme.textTheme.titleSmall?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                       const SizedBox(height: 12),
                       for (final r in recommendations)
                         Text("• $r", style: theme.textTheme.bodyLarge),

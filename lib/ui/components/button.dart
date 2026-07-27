@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/theme/colors.dart';
-import 'package:cyber_lab/theme/typography.dart';
-import 'package:cyber_lab/theme/spacing.dart';
-import 'package:cyber_lab/ui/theme/app_spacing.dart';
+import 'package:systems_studio/theme/colors.dart';
+import 'package:systems_studio/theme/typography.dart';
+import 'package:systems_studio/theme/spacing.dart';
+import 'package:systems_studio/ui/theme/app_spacing.dart';
 
-enum ButtonType {
-  primary,
-  secondary,
-  ghost,
-  danger,
-}
+enum ButtonType { primary, secondary, ghost, danger }
 
 class CyberButton extends StatelessWidget {
   final String label;
@@ -38,7 +33,9 @@ class CyberButton extends StatelessWidget {
 
     switch (type) {
       case ButtonType.primary:
-        background = isDisabled ? AppColors.primary.withOpacity(0.4) : AppColors.primary;
+        background = isDisabled
+            ? AppColors.primary.withOpacity(0.4)
+            : AppColors.primary;
         foreground = Colors.white;
         border = Colors.transparent;
         break;
@@ -56,7 +53,9 @@ class CyberButton extends StatelessWidget {
         break;
 
       case ButtonType.danger:
-        background = isDisabled ? AppColors.danger.withOpacity(0.4) : AppColors.danger;
+        background = isDisabled
+            ? AppColors.danger.withOpacity(0.4)
+            : AppColors.danger;
         foreground = Colors.white;
         border = Colors.transparent;
         break;

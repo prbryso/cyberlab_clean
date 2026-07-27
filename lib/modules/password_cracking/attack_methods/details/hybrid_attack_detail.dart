@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/theme/spacing.dart';
+import 'package:systems_studio/theme/spacing.dart';
 
 class HybridAttackDetail extends StatelessWidget {
   const HybridAttackDetail({super.key});
@@ -9,9 +9,7 @@ class HybridAttackDetail extends StatelessWidget {
     final spacing = CyberLabSpacing.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Hybrid Attacks"),
-      ),
+      appBar: AppBar(title: const Text("Hybrid Attacks")),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(spacing.xl),
         child: Column(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/theme/spacing.dart';
+import 'package:systems_studio/theme/spacing.dart';
 
 class WeakWhatMakesDetail extends StatelessWidget {
   const WeakWhatMakesDetail({super.key});
@@ -29,7 +29,10 @@ class WeakWhatMakesDetail extends StatelessWidget {
 
             SizedBox(height: spacing.xl),
 
-            Text("Common Weaknesses", style: Theme.of(context).textTheme.titleMedium),
+            Text(
+              "Common Weaknesses",
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
             SizedBox(height: spacing.sm),
             Text(
               "• Short passwords (under 10 characters)\n"

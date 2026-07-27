@@ -40,7 +40,8 @@ class _PasswordAnalyzerState extends State<PasswordAnalyzer> {
     if (seconds < 60) return "${seconds.toStringAsFixed(2)} seconds";
     if (seconds < 3600) return "${(seconds / 60).toStringAsFixed(2)} minutes";
     if (seconds < 86400) return "${(seconds / 3600).toStringAsFixed(2)} hours";
-    if (seconds < 31536000) return "${(seconds / 86400).toStringAsFixed(2)} days";
+    if (seconds < 31536000)
+      return "${(seconds / 86400).toStringAsFixed(2)} days";
     return "${(seconds / 31536000).toStringAsFixed(2)} years";
   }
 
@@ -105,14 +106,20 @@ class _PasswordAnalyzerState extends State<PasswordAnalyzer> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Strength: $strengthLabel",
-                    style: theme.textTheme.bodyLarge),
+                Text(
+                  "Strength: $strengthLabel",
+                  style: theme.textTheme.bodyLarge,
+                ),
                 const SizedBox(height: 6),
-                Text("Entropy: ${entropyBits.toStringAsFixed(1)} bits",
-                    style: theme.textTheme.bodyLarge),
+                Text(
+                  "Entropy: ${entropyBits.toStringAsFixed(1)} bits",
+                  style: theme.textTheme.bodyLarge,
+                ),
                 const SizedBox(height: 6),
-                Text("Estimated Crack Time: $crackTime",
-                    style: theme.textTheme.bodyLarge),
+                Text(
+                  "Estimated Crack Time: $crackTime",
+                  style: theme.textTheme.bodyLarge,
+                ),
                 const SizedBox(height: 12),
                 Text(explanation, style: theme.textTheme.bodyLarge),
               ],

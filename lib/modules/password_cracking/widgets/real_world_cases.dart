@@ -22,18 +22,22 @@ class RealWorldCases extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(title,
-                style: theme.textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                )),
+            Text(
+              title,
+              style: theme.textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             const SizedBox(height: 8),
             Text(description, style: theme.textTheme.bodyLarge),
             const SizedBox(height: 12),
             Text("Lesson:", style: theme.textTheme.titleSmall),
-            Text(lesson,
-                style: theme.textTheme.bodyLarge?.copyWith(
-                  fontWeight: FontWeight.w600,
-                )),
+            Text(
+              lesson,
+              style: theme.textTheme.bodyLarge?.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+            ),
           ],
         ),
       );
@@ -56,8 +60,7 @@ class RealWorldCases extends StatelessWidget {
           description:
               "A major company suffered a breach when an employee used the password “password”. "
               "Attackers guessed it instantly and gained access to internal systems.",
-          lesson:
-              "Never use common passwords — attackers try these first.",
+          lesson: "Never use common passwords — attackers try these first.",
         ),
 
         caseCard(
@@ -83,8 +86,7 @@ class RealWorldCases extends StatelessWidget {
           description:
               "Attackers gained access to internal tools by compromising an employee’s weak credentials. "
               "This allowed them to take over high‑profile accounts.",
-          lesson:
-              "One weak password can compromise an entire organization.",
+          lesson: "One weak password can compromise an entire organization.",
         ),
       ],
     );

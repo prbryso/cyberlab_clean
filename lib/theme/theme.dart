@@ -33,13 +33,11 @@ class CyberLabTheme {
       titleTextStyle: AppTypography.h3,
     ),
 
-  cardTheme: CardThemeData(
-    color: AppColors.surface,
-    elevation: 0,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(16),
+    cardTheme: CardThemeData(
+      color: AppColors.surface,
+      elevation: 0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
     ),
-  ),
 
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
@@ -59,9 +57,7 @@ class CyberLabTheme {
         backgroundColor: AppColors.primary,
         foregroundColor: Colors.white,
         padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 20),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         textStyle: AppTypography.bodyBold,
       ),
     ),

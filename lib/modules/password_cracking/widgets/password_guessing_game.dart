@@ -28,12 +28,7 @@ class _PasswordGuessingGameState extends State<PasswordGuessingGame> {
     "Longer than the universe",
   ];
 
-  final strengthOptions = [
-    "Weak",
-    "Medium",
-    "Strong",
-    "Passphrase",
-  ];
+  final strengthOptions = ["Weak", "Medium", "Strong", "Passphrase"];
 
   @override
   void initState() {
@@ -58,12 +53,7 @@ class _PasswordGuessingGameState extends State<PasswordGuessingGame> {
       password = weak[random.nextInt(weak.length)];
     } else if (type == 1) {
       // Medium
-      final medium = [
-        "CoffeeBean42",
-        "R3dH0use!",
-        "BlueSky_77",
-        "TigerClaw9",
-      ];
+      final medium = ["CoffeeBean42", "R3dH0use!", "BlueSky_77", "TigerClaw9"];
       password = medium[random.nextInt(medium.length)];
     } else {
       // Passphrase
@@ -198,14 +188,20 @@ class _PasswordGuessingGameState extends State<PasswordGuessingGame> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Actual Crack Time: $crackTime",
-                    style: theme.textTheme.bodyLarge),
+                Text(
+                  "Actual Crack Time: $crackTime",
+                  style: theme.textTheme.bodyLarge,
+                ),
                 const SizedBox(height: 6),
-                Text("Actual Strength: $strengthCategory",
-                    style: theme.textTheme.bodyLarge),
+                Text(
+                  "Actual Strength: $strengthCategory",
+                  style: theme.textTheme.bodyLarge,
+                ),
                 const SizedBox(height: 6),
-                Text("Entropy: ${entropyBits.toStringAsFixed(1)} bits",
-                    style: theme.textTheme.bodyLarge),
+                Text(
+                  "Entropy: ${entropyBits.toStringAsFixed(1)} bits",
+                  style: theme.textTheme.bodyLarge,
+                ),
               ],
             ),
           ),

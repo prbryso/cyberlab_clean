@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/modules/password_cracking/widgets/password_guessing_animation.dart';
+import 'package:systems_studio/modules/password_cracking/widgets/password_guessing_animation.dart';
 
 class PasswordIntroScreen extends StatelessWidget {
   const PasswordIntroScreen({super.key});
@@ -21,8 +21,8 @@ class PasswordIntroScreen extends StatelessWidget {
                 Text(
                   "Password Cracking",
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const SizedBox(height: 16),
 
@@ -52,7 +52,10 @@ class PasswordIntroScreen extends StatelessWidget {
                       Navigator.pushNamed(context, "/password");
                     },
                     child: const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 24,
+                        vertical: 12,
+                      ),
                       child: Text("Start Module"),
                     ),
                   ),

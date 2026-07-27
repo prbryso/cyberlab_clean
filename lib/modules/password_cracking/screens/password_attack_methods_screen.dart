@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/theme/spacing.dart';
+import 'package:systems_studio/theme/spacing.dart';
 
 class PasswordAttackMethodsOverview extends StatelessWidget {
   const PasswordAttackMethodsOverview({super.key});
@@ -9,9 +9,7 @@ class PasswordAttackMethodsOverview extends StatelessWidget {
     final spacing = CyberLabSpacing.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Attack Methods"),
-      ),
+      appBar: AppBar(title: const Text("Attack Methods")),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(spacing.xl),
         child: Center(
@@ -43,7 +41,10 @@ class PasswordAttackMethodsOverview extends StatelessWidget {
                       "Attackers use massive lists of real leaked passwords from past breaches. "
                       "If your password appears in these lists — even once — it can be cracked instantly.",
                   onMoreDetails: () {
-                    Navigator.pushNamed(context, "/password/attacks/dictionary");
+                    Navigator.pushNamed(
+                      context,
+                      "/password/attacks/dictionary",
+                    );
                   },
                 ),
                 SizedBox(height: spacing.lg),
@@ -56,7 +57,10 @@ class PasswordAttackMethodsOverview extends StatelessWidget {
                       "This method tries every possible combination of characters. "
                       "Short passwords fall quickly, but longer passphrases become exponentially harder to crack.",
                   onMoreDetails: () {
-                    Navigator.pushNamed(context, "/password/attacks/bruteforce");
+                    Navigator.pushNamed(
+                      context,
+                      "/password/attacks/bruteforce",
+                    );
                   },
                 ),
                 SizedBox(height: spacing.lg),
@@ -136,10 +140,7 @@ class _AttackCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
+                Text(title, style: Theme.of(context).textTheme.titleMedium),
                 SizedBox(height: spacing.sm),
                 Text(
                   description,

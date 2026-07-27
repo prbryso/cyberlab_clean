@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/theme/spacing.dart';
+import 'package:systems_studio/theme/spacing.dart';
 
 class BreachLinkedInDetail extends StatelessWidget {
   const BreachLinkedInDetail({super.key});
@@ -15,8 +15,10 @@ class BreachLinkedInDetail extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("The LinkedIn Password Leak",
-                style: Theme.of(context).textTheme.headlineMedium),
+            Text(
+              "The LinkedIn Password Leak",
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
             SizedBox(height: spacing.md),
 
             Text(
@@ -28,8 +30,10 @@ class BreachLinkedInDetail extends StatelessWidget {
 
             SizedBox(height: spacing.xl),
 
-            Text("🔓 What Went Wrong",
-                style: Theme.of(context).textTheme.titleLarge),
+            Text(
+              "🔓 What Went Wrong",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
             SizedBox(height: spacing.sm),
 
             Text(
@@ -41,8 +45,10 @@ class BreachLinkedInDetail extends StatelessWidget {
 
             SizedBox(height: spacing.lg),
 
-            Text("⚡ How Attackers Cracked Them",
-                style: Theme.of(context).textTheme.titleLarge),
+            Text(
+              "⚡ How Attackers Cracked Them",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
             SizedBox(height: spacing.sm),
 
             Text(
@@ -54,8 +60,10 @@ class BreachLinkedInDetail extends StatelessWidget {
 
             SizedBox(height: spacing.lg),
 
-            Text("📉 What They Found",
-                style: Theme.of(context).textTheme.titleLarge),
+            Text(
+              "📉 What They Found",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
             SizedBox(height: spacing.sm),
 
             Text(
@@ -70,8 +78,10 @@ class BreachLinkedInDetail extends StatelessWidget {
 
             SizedBox(height: spacing.lg),
 
-            Text("🧠 Lessons Learned",
-                style: Theme.of(context).textTheme.titleLarge),
+            Text(
+              "🧠 Lessons Learned",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
             SizedBox(height: spacing.sm),
 
             Text(

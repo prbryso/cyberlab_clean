@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/theme/spacing.dart';
+import 'package:systems_studio/theme/spacing.dart';
 
 class WeakFixingDetail extends StatelessWidget {
   const WeakFixingDetail({super.key});
@@ -29,7 +29,10 @@ class WeakFixingDetail extends StatelessWidget {
 
             SizedBox(height: spacing.xl),
 
-            Text("Best Practices", style: Theme.of(context).textTheme.titleMedium),
+            Text(
+              "Best Practices",
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
             SizedBox(height: spacing.sm),
             Text(
               "• Use long passphrases (12–16+ characters)\n"

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/theme/spacing.dart';
+import 'package:systems_studio/theme/spacing.dart';
 import 'details/brute_force_detail.dart';
 import 'details/credential_stuffing_detail.dart';
 import 'details/hybrid_attack_detail.dart';
 import 'details/dictionary_attack_detail.dart';
-
 
 class PasswordAttackMethodsOverview extends StatelessWidget {
   const PasswordAttackMethodsOverview({super.key});
@@ -14,9 +13,7 @@ class PasswordAttackMethodsOverview extends StatelessWidget {
     final spacing = CyberLabSpacing.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Attack Methods"),
-      ),
+      appBar: AppBar(title: const Text("Attack Methods")),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(spacing.xl),
         child: Center(
@@ -41,21 +38,21 @@ class PasswordAttackMethodsOverview extends StatelessWidget {
                 SizedBox(height: spacing.xl * 1.5),
 
                 // Dictionary Attack
-              _AttackCard(
-                icon: Icons.menu_book,
-                title: "Dictionary Attacks",
-                description:
-                    "Attackers use massive lists of real leaked passwords from past breaches. "
-                    "If your password appears in these lists — even once — it can be cracked instantly.",
-                onMoreDetails: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => const DictionaryAttackDetail(),
-                    ),
-                  );
-                },
-              ),
+                _AttackCard(
+                  icon: Icons.menu_book,
+                  title: "Dictionary Attacks",
+                  description:
+                      "Attackers use massive lists of real leaked passwords from past breaches. "
+                      "If your password appears in these lists — even once — it can be cracked instantly.",
+                  onMoreDetails: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const DictionaryAttackDetail(),
+                      ),
+                    );
+                  },
+                ),
 
                 SizedBox(height: spacing.lg),
 
@@ -67,14 +64,14 @@ class PasswordAttackMethodsOverview extends StatelessWidget {
                       "This method tries every possible combination of characters. "
                       "Short passwords fall quickly, but longer passphrases become exponentially harder to crack.",
                   onMoreDetails: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => const BruteForceDetail(),
-                    ),
-                  );
-                },
-              ),
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const BruteForceDetail(),
+                      ),
+                    );
+                  },
+                ),
 
                 SizedBox(height: spacing.lg),
 
@@ -86,14 +83,14 @@ class PasswordAttackMethodsOverview extends StatelessWidget {
                       "Attackers combine dictionary words with common patterns like numbers or symbols. "
                       "For example: 'password' → 'password1' → 'Password1!'",
                   onMoreDetails: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => const HybridAttackDetail(),
-                    ),
-                  );
-                },
-              ),
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const HybridAttackDetail(),
+                      ),
+                    );
+                  },
+                ),
 
                 SizedBox(height: spacing.lg),
 
@@ -105,14 +102,14 @@ class PasswordAttackMethodsOverview extends StatelessWidget {
                       "If attackers steal your password from one site, they try it on others. "
                       "Password reuse makes this attack extremely effective.",
                   onMoreDetails: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => const CredentialStuffingDetail(),
-                    ),
-                  );
-                },
-              ),
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const CredentialStuffingDetail(),
+                      ),
+                    );
+                  },
+                ),
 
                 SizedBox(height: spacing.xl * 1.5),
 
@@ -166,10 +163,7 @@ class _AttackCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
+                Text(title, style: Theme.of(context).textTheme.titleMedium),
                 SizedBox(height: spacing.sm),
                 Text(
                   description,

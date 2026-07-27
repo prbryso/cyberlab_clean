@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/theme/spacing.dart';
+import 'package:systems_studio/theme/spacing.dart';
 
 class PasswordHashingScreen extends StatelessWidget {
   const PasswordHashingScreen({super.key});
@@ -9,9 +9,7 @@ class PasswordHashingScreen extends StatelessWidget {
     final spacing = CyberLabSpacing.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Hashing"),
-      ),
+      appBar: AppBar(title: const Text("Hashing")),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(spacing.xl),
         child: Center(
@@ -121,10 +119,7 @@ class _HashCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
+                Text(title, style: Theme.of(context).textTheme.titleMedium),
                 SizedBox(height: spacing.sm),
                 Text(
                   description,

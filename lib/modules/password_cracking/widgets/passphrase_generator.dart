@@ -14,9 +14,26 @@ class _PassphraseGeneratorState extends State<PassphraseGenerator> {
 
   // A small curated list — you can expand this later
   final List<String> words = const [
-    "sunset", "river", "bicycle", "cloud", "forest", "coffee", "bridge",
-    "silver", "mountain", "pencil", "orange", "galaxy", "whisper", "candle",
-    "window", "garden", "rocket", "feather", "shadow", "planet",
+    "sunset",
+    "river",
+    "bicycle",
+    "cloud",
+    "forest",
+    "coffee",
+    "bridge",
+    "silver",
+    "mountain",
+    "pencil",
+    "orange",
+    "galaxy",
+    "whisper",
+    "candle",
+    "window",
+    "garden",
+    "rocket",
+    "feather",
+    "shadow",
+    "planet",
   ];
 
   int wordCount = 4;
@@ -65,9 +82,12 @@ class _PassphraseGeneratorState extends State<PassphraseGenerator> {
             const SizedBox(width: 8),
             DropdownButton<String>(
               value: separator,
-              items: [" ", "-", "_", "."]
-                  .map((s) => DropdownMenuItem(value: s, child: Text(s)))
-                  .toList(),
+              items: [
+                " ",
+                "-",
+                "_",
+                ".",
+              ].map((s) => DropdownMenuItem(value: s, child: Text(s))).toList(),
               onChanged: (v) => setState(() => separator = v ?? " "),
             ),
           ],

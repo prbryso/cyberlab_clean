@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/core/responsive/responsive_layout.dart';
-import 'package:cyber_lab/theme/spacing.dart';
+
+import 'package:systems_studio/core/responsive/responsive_layout.dart';
+import 'package:systems_studio/theme/spacing.dart';
+import 'package:systems_studio/ui/widgets/dashboard/dashboard_header.dart';
+import 'package:systems_studio/ui/widgets/dashboard/progress_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -8,61 +11,231 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final spacing = CyberLabSpacing.of(context);
-
-    final textScale = MediaQuery.of(context).textScaleFactor.clamp(1.0, 1.3);
-
-    int columns = 1;
-
-    if (ResponsiveLayout.isMedium(context)) {
-      columns = 2;
-    } else if (ResponsiveLayout.isLarge(context)) {
-      columns = 3;
-    }
+    final mediaQuery = MediaQuery.of(context);
+    final textScale = mediaQuery.textScaler.scale(1).clamp(1.0, 1.2);
 
     return MediaQuery(
-      data: MediaQuery.of(context).copyWith(textScaleFactor: textScale),
+      data: mediaQuery.copyWith(textScaler: TextScaler.linear(textScale)),
       child: Scaffold(
-        appBar: AppBar(title: const Text("Choose a Module")),
-        body: Padding(
-          padding: EdgeInsets.all(spacing.lg),
-          child: GridView.count(
-            crossAxisCount: columns,
-            crossAxisSpacing: spacing.lg,
-            mainAxisSpacing: spacing.lg,
-            childAspectRatio: ResponsiveLayout.isSmall(context)
-                ? 3.5 / textScale
-                : 1.6 / textScale,
-            children: const [
-              _ModuleCard(
-                title: "Passwords",
-                description: "Learn how attackers break weak passwords.",
-                icon: Icons.lock,
-                route: "/password",
-              ),
-              _ModuleCard(
-                title: "Encryption",
-                description: "Understand how encryption protects your data.",
-                icon: Icons.key,
-                route: "/encryption",
-              ),
-              _ModuleCard(
-                title: "Phishing",
-                description: "Spot fake emails and protect yourself.",
-                icon: Icons.search,
-                route: "/phishing",
-              ),
-              _ModuleCard(
-                title: "Social Engineering",
-                description: "see how attackers manipulate people",
-                icon: Icons.search,
-                route: "/social",
-              ),
-              _ModuleCard(
-                title: "Networking",
-                description:
-                    "see how everything hooks together and communicates",
-                icon: Icons.search,
-                route: "/networking",
+        appBar: AppBar(title: const Text('iSecurity')),
+        body: ListView(
+          padding: EdgeInsets.all(spacing.md),
+          children: [
+            _DashboardSection(spacing: spacing),
+            SizedBox(height: spacing.lg),
+            _LearningPathHeading(spacing: spacing),
+            SizedBox(height: spacing.sm),
+            _ModuleGrid(spacing: spacing),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _DashboardSection extends StatelessWidget {
+  final CyberLabSpacing spacing;
+
+  const _DashboardSection({required this.spacing});
+
+  @override
+  Widget build(BuildContext context) {
+    if (ResponsiveLayout.isSmall(context)) {
+      return Column(
+        children: [
+          const DashboardHeader(),
+          SizedBox(height: spacing.md),
+          const ProgressCard(),
+        ],
+      );
+    }
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Expanded(flex: 3, child: DashboardHeader()),
+        SizedBox(width: spacing.md),
+        const Expanded(flex: 1, child: ProgressCard()),
+      ],
+    );
+  }
+}
+
+class _LearningPathHeading extends StatelessWidget {
+  final CyberLabSpacing spacing;
+
+  const _LearningPathHeading({required this.spacing});
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
+    if (ResponsiveLayout.isSmall(context)) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Learning Path',
+            style: textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: spacing.xs),
+          Text(
+            'Start anywhere or follow the recommended sequence. '
+            'Use the Begin Learning button to get started.',
+            style: textTheme.bodyMedium?.copyWith(
+              color: colorScheme.onSurfaceVariant,
+            ),
+          ),
+        ],
+      );
+    }
+
+    return Text.rich(
+      TextSpan(
+        children: [
+          TextSpan(
+            text: 'Learning Path',
+            style: textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          TextSpan(
+            text:
+                '        Start anywhere or follow the recommended sequence. '
+                'Use the Begin Learning button to get started.',
+            style: textTheme.bodyMedium?.copyWith(
+              color: colorScheme.onSurfaceVariant,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ModuleGrid extends StatelessWidget {
+  final CyberLabSpacing spacing;
+
+  const _ModuleGrid({required this.spacing});
+
+  @override
+  Widget build(BuildContext context) {
+    final columns = _columnCount(context);
+    final cardHeight = _cardHeight(context);
+
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: _modules.length,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: columns,
+        crossAxisSpacing: spacing.sm,
+        mainAxisSpacing: spacing.sm,
+        mainAxisExtent: cardHeight,
+      ),
+      itemBuilder: (context, index) {
+        final module = _modules[index];
+
+        return ModuleCard(
+          title: module.title,
+          description: module.description,
+          icon: module.icon,
+          route: module.route,
+        );
+      },
+    );
+  }
+
+  int _columnCount(BuildContext context) {
+    if (ResponsiveLayout.isLarge(context)) {
+      return 3;
+    }
+
+    if (ResponsiveLayout.isMedium(context)) {
+      return 2;
+    }
+
+    return 1;
+  }
+
+  double _cardHeight(BuildContext context) {
+    if (ResponsiveLayout.isSmall(context)) {
+      return 132;
+    }
+
+    return 142;
+  }
+}
+
+class ModuleCard extends StatelessWidget {
+  final String title;
+  final String description;
+  final IconData icon;
+  final String route;
+
+  const ModuleCard({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.icon,
+    required this.route,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final spacing = CyberLabSpacing.of(context);
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(spacing.md),
+        onTap: () {
+          Navigator.pushNamed(context, route);
+        },
+        child: Ink(
+          padding: EdgeInsets.symmetric(
+            horizontal: spacing.md,
+            vertical: spacing.md,
+          ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(spacing.md),
+            color: colorScheme.surfaceContainerHighest,
+            border: Border.all(color: colorScheme.outlineVariant),
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Icon(icon, size: spacing.lg * 1.1, color: colorScheme.primary),
+              SizedBox(width: spacing.md),
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    SizedBox(height: spacing.xs),
+                    Flexible(
+                      child: Text(
+                        description,
+                        style: textTheme.bodyMedium,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -72,131 +245,95 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class _ModuleCard extends StatefulWidget {
+class _ModuleDefinition {
   final String title;
   final String description;
   final IconData icon;
   final String route;
 
-  const _ModuleCard({
+  const _ModuleDefinition({
     required this.title,
     required this.description,
     required this.icon,
     required this.route,
   });
-
-  @override
-  State<_ModuleCard> createState() => _ModuleCardState();
 }
 
-class _ModuleCardState extends State<_ModuleCard>
-    with SingleTickerProviderStateMixin {
-  bool _pressed = false;
-
-  late AnimationController _controller;
-  late Animation<double> _fadeAnimation;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 300),
-    );
-
-    _fadeAnimation = CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeOutCubic,
-    );
-
-    _controller.forward();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final spacing = CyberLabSpacing.of(context);
-
-    return FadeTransition(
-      opacity: _fadeAnimation,
-      child: GestureDetector(
-        onTapDown: (_) => setState(() => _pressed = true),
-        onTapCancel: () => setState(() => _pressed = false),
-        onTapUp: (_) {
-          setState(() => _pressed = false);
-          Navigator.pushNamed(context, widget.route);
-        },
-        child: AnimatedScale(
-          scale: _pressed ? 0.98 : 1.0,
-          duration: const Duration(milliseconds: 150),
-          curve: Curves.easeOutCubic,
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 150),
-            curve: Curves.easeOutCubic,
-            padding: EdgeInsets.all(spacing.lg),
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.surface,
-              borderRadius: BorderRadius.circular(spacing.md),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(_pressed ? 0.08 : 0.04),
-                  blurRadius: _pressed ? 10 : 6,
-                  offset: const Offset(0, 4),
-                ),
-              ],
-            ),
-            child: InkWell(
-              borderRadius: BorderRadius.circular(spacing.md),
-              splashColor: Theme.of(
-                context,
-              ).colorScheme.primary.withOpacity(0.1),
-              hoverColor: Colors.transparent,
-              focusColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Icon(
-                    widget.icon,
-                    size:
-                        spacing.xl *
-                        MediaQuery.of(context).textScaleFactor.clamp(1.0, 1.2),
-                  ),
-                  SizedBox(height: spacing.md),
-
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.title,
-                          style: Theme.of(context).textTheme.titleLarge,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        SizedBox(height: spacing.sm),
-                        Text(
-                          widget.description,
-                          style: Theme.of(context).textTheme.bodyMedium,
-                          maxLines: 3,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
+const List<_ModuleDefinition> _modules = [
+  _ModuleDefinition(
+    title: 'Prevent Account Takeovers',
+    description:
+        'Learn how attackers break weak passwords and reuse stolen credentials.',
+    icon: Icons.lock,
+    route: '/password',
+  ),
+  _ModuleDefinition(
+    title: 'Protect Data with Encryption',
+    description: 'Understand how encryption protects private information.',
+    icon: Icons.key,
+    route: '/encryption',
+  ),
+  _ModuleDefinition(
+    title: 'Spot Phishing Attacks',
+    description:
+        'Recognize fake emails, malicious links, and credential theft attempts.',
+    icon: Icons.mark_email_read,
+    route: '/phishing',
+  ),
+  _ModuleDefinition(
+    title: 'Defeat Social Engineering',
+    description:
+        'Learn how attackers manipulate people to bypass technical defenses.',
+    icon: Icons.psychology,
+    route: '/social',
+  ),
+  _ModuleDefinition(
+    title: 'Understand Networks',
+    description:
+        'See how systems communicate and where attackers look for weakness.',
+    icon: Icons.hub,
+    route: '/networking',
+  ),
+  _ModuleDefinition(
+    title: 'OS and Application Holes',
+    description: 'Learn how software and operating system flaws are exploited.',
+    icon: Icons.warning_amber,
+    route: '/osappholes',
+  ),
+  _ModuleDefinition(
+    title: 'Exploits',
+    description: 'See how attackers turn vulnerabilities into real attacks.',
+    icon: Icons.bolt,
+    route: '/exploits',
+  ),
+  _ModuleDefinition(
+    title: 'Zero-Days',
+    description: 'Learn why unknown vulnerabilities are especially dangerous.',
+    icon: Icons.bug_report,
+    route: '/zero-days',
+  ),
+  _ModuleDefinition(
+    title: 'Patch Management',
+    description: 'Fix vulnerabilities before attackers exploit them.',
+    icon: Icons.system_update_alt,
+    route: '/patch',
+  ),
+  _ModuleDefinition(
+    title: 'System Hardening',
+    description: 'Reduce attack surface and lock systems down.',
+    icon: Icons.shield,
+    route: '/hardening',
+  ),
+  _ModuleDefinition(
+    title: 'Secure Coding',
+    description: 'Prevent vulnerabilities before software is released.',
+    icon: Icons.code,
+    route: '/secure',
+  ),
+  _ModuleDefinition(
+    title: 'Capstone Challenge',
+    description: 'Complete a full incident response simulation.',
+    icon: Icons.flag,
+    route: '/capstone',
+  ),
+];

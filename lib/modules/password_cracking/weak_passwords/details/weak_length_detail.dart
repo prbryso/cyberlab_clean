@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/theme/spacing.dart';
+import 'package:systems_studio/theme/spacing.dart';
 import '../../widgets/passphrase_generator.dart'; // ← Add your generator import
 
 class WeakLengthDetail extends StatelessWidget {
@@ -156,7 +156,9 @@ class WeakLengthDetail extends StatelessWidget {
           // HEADER ROW
           TableRow(
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.5),
+              color: Theme.of(
+                context,
+              ).colorScheme.surfaceVariant.withOpacity(0.5),
             ),
             children: [
               _tableHeader(context, "Length"),
@@ -186,9 +188,9 @@ class WeakLengthDetail extends StatelessWidget {
       padding: const EdgeInsets.all(12),
       child: Text(
         text,
-        style: Theme.of(context).textTheme.titleSmall!.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
+        style: Theme.of(
+          context,
+        ).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.bold),
       ),
     );
   }
@@ -196,10 +198,7 @@ class WeakLengthDetail extends StatelessWidget {
   Widget _tableCell(BuildContext context, String text) {
     return Padding(
       padding: const EdgeInsets.all(12),
-      child: Text(
-        text,
-        style: Theme.of(context).textTheme.bodyMedium,
-      ),
+      child: Text(text, style: Theme.of(context).textTheme.bodyMedium),
     );
   }
 
@@ -223,14 +222,16 @@ class WeakLengthDetail extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(spacing.md),
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.25),
+              color: Theme.of(
+                context,
+              ).colorScheme.surfaceVariant.withOpacity(0.25),
               borderRadius: BorderRadius.circular(spacing.sm),
             ),
             child: Text(
               p,
-              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
+              style: Theme.of(
+                context,
+              ).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w600),
             ),
           ),
         );

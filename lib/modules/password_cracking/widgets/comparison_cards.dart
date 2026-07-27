@@ -122,12 +122,7 @@ class _PasswordCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("• ", style: theme.textTheme.bodyMedium),
-                  Expanded(
-                    child: Text(
-                      d,
-                      style: theme.textTheme.bodyMedium,
-                    ),
-                  ),
+                  Expanded(child: Text(d, style: theme.textTheme.bodyMedium)),
                 ],
               ),
             ),

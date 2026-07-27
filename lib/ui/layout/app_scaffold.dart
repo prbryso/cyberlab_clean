@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/theme/colors.dart';
-import 'package:cyber_lab/theme/spacing.dart';
-import 'package:cyber_lab/ui/theme/app_spacing.dart';
+import 'package:systems_studio/theme/colors.dart';
+import 'package:systems_studio/theme/spacing.dart';
+import 'package:systems_studio/ui/theme/app_spacing.dart';
 
 class AppScaffold extends StatelessWidget {
   final String? title;
@@ -34,10 +34,7 @@ class AppScaffold extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: title != null
-          ? AppBar(
-              title: Text(title!),
-              actions: actions,
-            )
+          ? AppBar(title: Text(title!), actions: actions)
           : null,
       floatingActionButton: floatingActionButton,
       bottomNavigationBar: bottomNavigation,

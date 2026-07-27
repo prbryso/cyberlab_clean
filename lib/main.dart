@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/theme/theme.dart';
-import 'package:cyber_lab/core/routing/app_router.dart';
-
+import 'package:systems_studio/theme/theme.dart';
+import 'package:systems_studio/core/routing/app_router.dart';
 
 void main() {
   runApp(CyberLabApp());
 }
 
 class CyberLabApp extends StatelessWidget {
-   CyberLabApp({super.key});
+  CyberLabApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,4 +19,3 @@ class CyberLabApp extends StatelessWidget {
     );
   }
 }
-

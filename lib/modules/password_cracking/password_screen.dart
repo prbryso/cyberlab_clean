@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/ui/layout/app_scaffold.dart';
-import 'package:cyber_lab/ui/components/info_card.dart';
-import 'package:cyber_lab/ui/components/button.dart';
+import 'package:systems_studio/ui/layout/app_scaffold.dart';
+import 'package:systems_studio/ui/components/info_card.dart';
+import 'package:systems_studio/ui/components/button.dart';
 
 class PasswordScreen extends StatelessWidget {
   const PasswordScreen({super.key});

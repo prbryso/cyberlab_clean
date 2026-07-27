@@ -43,32 +43,28 @@ class CharsetToggle extends StatelessWidget {
             FilterChip(
               label: const Text("Lowercase (a–z)"),
               selected: useLower,
-              onSelected: (v) =>
-                  onChanged(v, useUpper, useNumbers, useSymbols),
+              onSelected: (v) => onChanged(v, useUpper, useNumbers, useSymbols),
             ),
 
             // UPPERCASE
             FilterChip(
               label: const Text("Uppercase (A–Z)"),
               selected: useUpper,
-              onSelected: (v) =>
-                  onChanged(useLower, v, useNumbers, useSymbols),
+              onSelected: (v) => onChanged(useLower, v, useNumbers, useSymbols),
             ),
 
             // NUMBERS
             FilterChip(
               label: const Text("Numbers (0–9)"),
               selected: useNumbers,
-              onSelected: (v) =>
-                  onChanged(useLower, useUpper, v, useSymbols),
+              onSelected: (v) => onChanged(useLower, useUpper, v, useSymbols),
             ),
 
             // SYMBOLS
             FilterChip(
               label: const Text("Symbols (! @ # …)"),
               selected: useSymbols,
-              onSelected: (v) =>
-                  onChanged(useLower, useUpper, useNumbers, v),
+              onSelected: (v) => onChanged(useLower, useUpper, useNumbers, v),
             ),
           ],
         ),

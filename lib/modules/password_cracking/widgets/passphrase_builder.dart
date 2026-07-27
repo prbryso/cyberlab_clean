@@ -13,9 +13,26 @@ class _PassphraseBuilderState extends State<PassphraseBuilder> {
 
   // Small demo list — entropy uses realistic Diceware size
   final List<String> words = const [
-    "sunset", "river", "bicycle", "cloud", "forest", "coffee", "bridge",
-    "silver", "mountain", "pencil", "orange", "galaxy", "whisper", "candle",
-    "window", "garden", "rocket", "feather", "shadow", "planet",
+    "sunset",
+    "river",
+    "bicycle",
+    "cloud",
+    "forest",
+    "coffee",
+    "bridge",
+    "silver",
+    "mountain",
+    "pencil",
+    "orange",
+    "galaxy",
+    "whisper",
+    "candle",
+    "window",
+    "garden",
+    "rocket",
+    "feather",
+    "shadow",
+    "planet",
   ];
 
   List<String> selectedWords = ["", "", "", ""];
@@ -42,7 +59,8 @@ class _PassphraseBuilderState extends State<PassphraseBuilder> {
     if (seconds < 60) return "${seconds.toStringAsFixed(2)} seconds";
     if (seconds < 3600) return "${(seconds / 60).toStringAsFixed(2)} minutes";
     if (seconds < 86400) return "${(seconds / 3600).toStringAsFixed(2)} hours";
-    if (seconds < 31536000) return "${(seconds / 86400).toStringAsFixed(2)} days";
+    if (seconds < 31536000)
+      return "${(seconds / 86400).toStringAsFixed(2)} days";
 
     return "${(seconds / 31536000).toStringAsFixed(2)} years";
   }
@@ -83,13 +101,13 @@ class _PassphraseBuilderState extends State<PassphraseBuilder> {
                     child: Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: theme.colorScheme.surfaceVariant.withOpacity(0.4),
+                        color: theme.colorScheme.surfaceVariant.withOpacity(
+                          0.4,
+                        ),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
-                        selectedWords[i].isEmpty
-                            ? "(empty)"
-                            : selectedWords[i],
+                        selectedWords[i].isEmpty ? "(empty)" : selectedWords[i],
                         style: theme.textTheme.bodyLarge?.copyWith(
                           fontFamily: "monospace",
                         ),
@@ -115,9 +133,12 @@ class _PassphraseBuilderState extends State<PassphraseBuilder> {
             const SizedBox(width: 8),
             DropdownButton<String>(
               value: separator,
-              items: [" ", "-", "_", "."]
-                  .map((s) => DropdownMenuItem(value: s, child: Text(s)))
-                  .toList(),
+              items: [
+                " ",
+                "-",
+                "_",
+                ".",
+              ].map((s) => DropdownMenuItem(value: s, child: Text(s))).toList(),
               onChanged: (v) => setState(() => separator = v ?? " "),
             ),
           ],

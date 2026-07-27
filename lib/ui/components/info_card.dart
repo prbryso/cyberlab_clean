@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:cyber_lab/theme/colors.dart';
-import 'package:cyber_lab/theme/typography.dart';
-import 'package:cyber_lab/theme/spacing.dart';
+import 'package:systems_studio/theme/colors.dart';
+import 'package:systems_studio/theme/typography.dart';
+import 'package:systems_studio/theme/spacing.dart';
 import 'app_card.dart';
-import 'package:cyber_lab/ui/theme/app_spacing.dart';
+import 'package:systems_studio/ui/theme/app_spacing.dart';
 
 class InfoCard extends StatelessWidget {
   final String title;
@@ -23,16 +23,13 @@ class InfoCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (icon != null)
-            Icon(icon, color: AppColors.cyberBlue, size: 28),
+          if (icon != null) Icon(icon, color: AppColors.cyberBlue, size: 28),
           if (icon != null) const SizedBox(height: AppSpacing.md),
           Text(title, style: AppTypography.h3),
           const SizedBox(height: AppSpacing.sm),
           Text(
             body,
-            style: AppTypography.body.copyWith(
-              color: AppColors.textSecondary,
-            ),
+            style: AppTypography.body.copyWith(color: AppColors.textSecondary),
           ),
         ],
       ),

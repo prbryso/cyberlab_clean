@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:systems_studio/theme/theme.dart';
-import 'package:systems_studio/core/routing/app_router.dart';
+import 'package:systems_studio/engine/core/routing/app_router.dart';
 
 void main() {
   runApp(CyberLabApp());

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:systems_studio/core/responsive/responsive_layout.dart';
+import 'package:systems_studio/engine/core/responsive/responsive_layout.dart';
 import 'package:systems_studio/theme/spacing.dart';
 import 'package:systems_studio/ui/widgets/dashboard/dashboard_header.dart';
 import 'package:systems_studio/ui/widgets/dashboard/progress_card.dart';

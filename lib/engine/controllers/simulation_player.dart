@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 
-import 'package:systems_studio/controllers/simulation_controller.dart';
+import 'package:systems_studio/engine/controllers/simulation_controller.dart';
 
 enum PlayerState { idle, starting, playing, paused, finished }
 

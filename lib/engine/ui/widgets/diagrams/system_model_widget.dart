@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:systems_studio/engine/models/system_model.dart';
-import 'package:systems_studio/ui/widgets/system/node_details_panel.dart';
+import 'package:systems_studio/engine/ui/widgets/system/node_details_panel.dart';
 
 class SystemModelWidget extends StatefulWidget {
   const SystemModelWidget({super.key, required this.model});

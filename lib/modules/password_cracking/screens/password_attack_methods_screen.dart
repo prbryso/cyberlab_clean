@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:systems_studio/theme/spacing.dart';
+import 'package:systems_studio/engine/theme/spacing.dart';
 
 class PasswordAttackMethodsOverview extends StatelessWidget {
   const PasswordAttackMethodsOverview({super.key});

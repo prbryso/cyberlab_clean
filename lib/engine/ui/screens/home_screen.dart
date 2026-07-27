@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:systems_studio/engine/core/responsive/responsive_layout.dart';
-import 'package:systems_studio/theme/spacing.dart';
-import 'package:systems_studio/ui/widgets/dashboard/dashboard_header.dart';
-import 'package:systems_studio/ui/widgets/dashboard/progress_card.dart';
+import 'package:systems_studio/engine/theme/spacing.dart';
+import 'package:systems_studio/engine/ui/widgets/dashboard/dashboard_header.dart';
+import 'package:systems_studio/engine/ui/widgets/dashboard/progress_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

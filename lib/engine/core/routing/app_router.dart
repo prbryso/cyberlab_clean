@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:systems_studio/ui/screens/home_screen.dart';
+import 'package:systems_studio/engine/ui/screens/home_screen.dart';
 
 // Password Cracking module
 import 'package:systems_studio/modules/password_cracking/screens/password_intro_screen.dart';
@@ -117,7 +117,7 @@ import 'package:systems_studio/modules/capstone/phase3_escalation_page.dart';
 import 'package:systems_studio/modules/capstone/phase4_containment_page.dart';
 import 'package:systems_studio/modules/capstone/phase5_lessons_page.dart';
 
-import 'package:systems_studio/ui/screens/module_screen.dart';
+import 'package:systems_studio/engine/ui/screens/module_screen.dart';
 import 'package:systems_studio/data/modules/password_module.dart';
 
 class AppRouter {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:systems_studio/theme/spacing.dart';
+import 'package:systems_studio/engine/theme/spacing.dart';
 import '../../widgets/password_strength_lab.dart';
 import '../../widgets/passphrase_generator.dart';
 import '../../widgets/passphrase_builder.dart';

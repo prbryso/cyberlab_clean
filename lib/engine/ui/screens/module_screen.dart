@@ -4,11 +4,11 @@ import 'package:systems_studio/data/systems/authentication_systems.dart';
 import 'package:systems_studio/engine/models/module.dart';
 import 'package:systems_studio/engine/models/perspective.dart';
 import 'package:systems_studio/engine/models/system_model.dart';
-import 'package:systems_studio/theme/spacing.dart';
-import 'package:systems_studio/ui/widgets/common/section_card.dart';
-import 'package:systems_studio/ui/widgets/diagrams/system_model_widget.dart';
-import 'package:systems_studio/ui/widgets/module/module_roadmap.dart';
-import 'package:systems_studio/ui/widgets/perspective/perspective_selector.dart';
+import 'package:systems_studio/engine/theme/spacing.dart';
+import 'package:systems_studio/engine/ui/widgets/common/section_card.dart';
+import 'package:systems_studio/engine/ui/widgets/diagrams/system_model_widget.dart';
+import 'package:systems_studio/engine/ui/widgets/module/module_roadmap.dart';
+import 'package:systems_studio/engine/ui/widgets/perspective/perspective_selector.dart';
 
 class ModuleScreen extends StatefulWidget {
   final LearningModule module;

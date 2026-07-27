@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:systems_studio/theme/colors.dart';
+import 'package:systems_studio/engine/theme/colors.dart';
 
 class StrengthMeter extends StatelessWidget {
   final int strength; // 0–100

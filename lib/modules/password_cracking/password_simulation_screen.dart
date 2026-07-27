@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:systems_studio/ui/layout/app_scaffold.dart';
-import 'package:systems_studio/ui/components/button.dart';
+import 'package:systems_studio/engine/ui/layout/app_scaffold.dart';
+import 'package:systems_studio/engine/ui/components/button.dart';
 import 'package:systems_studio/modules/password_cracking/widgets/strength_meter.dart';
 import 'package:systems_studio/modules/password_cracking/logic/password_analyzer.dart';
 

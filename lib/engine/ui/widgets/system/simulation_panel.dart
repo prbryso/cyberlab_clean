@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:systems_studio/controllers/simulation_controller.dart';
+import 'package:systems_studio/engine/controllers/simulation_controller.dart';
 
 class SimulationPanel extends StatelessWidget {
   const SimulationPanel({super.key, required this.controller});

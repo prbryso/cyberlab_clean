@@ -17,13 +17,13 @@ class HomeScreen extends StatelessWidget {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaler: TextScaler.linear(textScale)),
       child: Scaffold(
-        appBar: AppBar(title: const Text('iSecurity')),
+        appBar: AppBar(title: const Text('Systems Studio')),
         body: ListView(
           padding: EdgeInsets.all(spacing.md),
           children: [
             _DashboardSection(spacing: spacing),
             SizedBox(height: spacing.lg),
-            _LearningPathHeading(spacing: spacing),
+            _LibraryHeading(spacing: spacing),
             SizedBox(height: spacing.sm),
             _ModuleGrid(spacing: spacing),
           ],
@@ -61,30 +61,34 @@ class _DashboardSection extends StatelessWidget {
   }
 }
 
-class _LearningPathHeading extends StatelessWidget {
+class _LibraryHeading extends StatelessWidget {
   final CyberLabSpacing spacing;
 
-  const _LearningPathHeading({required this.spacing});
+  const _LibraryHeading({required this.spacing});
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
 
+    const description =
+        'Cyber Lab is the first Systems Studio learning library. '
+        'Explore cybersecurity systems through interactive lessons, '
+        'diagrams, and simulations.';
+
     if (ResponsiveLayout.isSmall(context)) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Learning Path',
+            'Cyber Lab Library',
             style: textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
             ),
           ),
           SizedBox(height: spacing.xs),
           Text(
-            'Start anywhere or follow the recommended sequence. '
-            'Use the Begin Learning button to get started.',
+            description,
             style: textTheme.bodyMedium?.copyWith(
               color: colorScheme.onSurfaceVariant,
             ),
@@ -97,15 +101,13 @@ class _LearningPathHeading extends StatelessWidget {
       TextSpan(
         children: [
           TextSpan(
-            text: 'Learning Path',
+            text: 'Cyber Lab Library',
             style: textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
             ),
           ),
           TextSpan(
-            text:
-                '        Start anywhere or follow the recommended sequence. '
-                'Use the Begin Learning button to get started.',
+            text: '        $description',
             style: textTheme.bodyMedium?.copyWith(
               color: colorScheme.onSurfaceVariant,
             ),

@@ -1,4 +1,6 @@
 import 'package:systems_studio/engine/models/system_model.dart';
+import 'package:systems_studio/engine/ui/widgets/system/simulation_panel.dart';
+import 'package:systems_studio/engine/models/system_simulation.dart';
 
 /// Describes an executable simulation for a SystemModel.
 ///

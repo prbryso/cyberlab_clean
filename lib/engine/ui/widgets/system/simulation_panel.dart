@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:systems_studio/engine/models/system_simulation.dart';
 import 'package:systems_studio/engine/controllers/simulation_controller.dart';
 
 class SimulationPanel extends StatelessWidget {

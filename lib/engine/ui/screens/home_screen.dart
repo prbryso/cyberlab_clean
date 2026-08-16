@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:systems_studio/engine/core/responsive/responsive_layout.dart';
+import 'package:systems_studio/engine/models/studio_library.dart';
+import 'package:systems_studio/engine/services/studio_library_registry.dart';
 import 'package:systems_studio/engine/theme/spacing.dart';
-import 'package:systems_studio/engine/ui/widgets/dashboard/dashboard_header.dart';
-import 'package:systems_studio/engine/ui/widgets/dashboard/progress_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,6 +13,7 @@ class HomeScreen extends StatelessWidget {
     final spacing = CyberLabSpacing.of(context);
     final mediaQuery = MediaQuery.of(context);
     final textScale = mediaQuery.textScaler.scale(1).clamp(1.0, 1.2);
+    final libraries = StudioLibraryRegistry.instance.libraries;
 
     return MediaQuery(
       data: mediaQuery.copyWith(textScaler: TextScaler.linear(textScale)),
@@ -21,11 +22,25 @@ class HomeScreen extends StatelessWidget {
         body: ListView(
           padding: EdgeInsets.all(spacing.md),
           children: [
-            _DashboardSection(spacing: spacing),
+            _StudioHeader(spacing: spacing),
             SizedBox(height: spacing.lg),
-            _LibraryHeading(spacing: spacing),
-            SizedBox(height: spacing.sm),
-            _ModuleGrid(spacing: spacing),
+            Text(
+              'Learning Libraries',
+              style: Theme.of(
+                context,
+              ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: spacing.xs),
+            Text(
+              'Select a library to explore its systems, lessons, '
+              'diagrams, and simulations.',
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            SizedBox(height: spacing.md),
+            if (libraries.isEmpty)
+              const _EmptyLibraryMessage()
+            else
+              _LibraryGrid(libraries: libraries, spacing: spacing),
           ],
         ),
       ),
@@ -33,83 +48,46 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class _DashboardSection extends StatelessWidget {
+class _StudioHeader extends StatelessWidget {
+  const _StudioHeader({required this.spacing});
+
   final CyberLabSpacing spacing;
-
-  const _DashboardSection({required this.spacing});
-
-  @override
-  Widget build(BuildContext context) {
-    if (ResponsiveLayout.isSmall(context)) {
-      return Column(
-        children: [
-          const DashboardHeader(),
-          SizedBox(height: spacing.md),
-          const ProgressCard(),
-        ],
-      );
-    }
-
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Expanded(flex: 3, child: DashboardHeader()),
-        SizedBox(width: spacing.md),
-        const Expanded(flex: 1, child: ProgressCard()),
-      ],
-    );
-  }
-}
-
-class _LibraryHeading extends StatelessWidget {
-  final CyberLabSpacing spacing;
-
-  const _LibraryHeading({required this.spacing});
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
 
-    const description =
-        'Cyber Lab is the first Systems Studio learning library. '
-        'Explore cybersecurity systems through interactive lessons, '
-        'diagrams, and simulations.';
-
-    if (ResponsiveLayout.isSmall(context)) {
-      return Column(
+    return Container(
+      padding: EdgeInsets.all(spacing.lg),
+      decoration: BoxDecoration(
+        color: colorScheme.primaryContainer,
+        borderRadius: BorderRadius.circular(spacing.md),
+      ),
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Cyber Lab Library',
+            'Explore Complex Systems',
             style: textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
+              color: colorScheme.onPrimaryContainer,
             ),
           ),
-          SizedBox(height: spacing.xs),
+          SizedBox(height: spacing.sm),
           Text(
-            description,
-            style: textTheme.bodyMedium?.copyWith(
-              color: colorScheme.onSurfaceVariant,
-            ),
-          ),
-        ],
-      );
-    }
-
-    return Text.rich(
-      TextSpan(
-        children: [
-          TextSpan(
-            text: 'Cyber Lab Library',
-            style: textTheme.headlineSmall?.copyWith(
+            'Teach the System.\nNot Just the Rule.',
+            style: textTheme.titleLarge?.copyWith(
               fontWeight: FontWeight.bold,
+              fontStyle: FontStyle.italic,
+              color: colorScheme.onPrimaryContainer,
             ),
           ),
-          TextSpan(
-            text: '        $description',
-            style: textTheme.bodyMedium?.copyWith(
-              color: colorScheme.onSurfaceVariant,
+          SizedBox(height: spacing.sm),
+          Text(
+            'Choose a learning library and explore how its systems work.',
+            style: textTheme.bodyLarge?.copyWith(
+              color: colorScheme.onPrimaryContainer,
             ),
           ),
         ],
@@ -118,35 +96,26 @@ class _LibraryHeading extends StatelessWidget {
   }
 }
 
-class _ModuleGrid extends StatelessWidget {
-  final CyberLabSpacing spacing;
+class _LibraryGrid extends StatelessWidget {
+  const _LibraryGrid({required this.libraries, required this.spacing});
 
-  const _ModuleGrid({required this.spacing});
+  final List<StudioLibrary> libraries;
+  final CyberLabSpacing spacing;
 
   @override
   Widget build(BuildContext context) {
-    final columns = _columnCount(context);
-    final cardHeight = _cardHeight(context);
-
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: _modules.length,
+      itemCount: libraries.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: columns,
+        crossAxisCount: _columnCount(context),
         crossAxisSpacing: spacing.sm,
         mainAxisSpacing: spacing.sm,
-        mainAxisExtent: cardHeight,
+        mainAxisExtent: 190,
       ),
       itemBuilder: (context, index) {
-        final module = _modules[index];
-
-        return ModuleCard(
-          title: module.title,
-          description: module.description,
-          icon: module.icon,
-          route: module.route,
-        );
+        return _LibraryCard(library: libraries[index]);
       },
     );
   }
@@ -162,29 +131,12 @@ class _ModuleGrid extends StatelessWidget {
 
     return 1;
   }
-
-  double _cardHeight(BuildContext context) {
-    if (ResponsiveLayout.isSmall(context)) {
-      return 132;
-    }
-
-    return 142;
-  }
 }
 
-class ModuleCard extends StatelessWidget {
-  final String title;
-  final String description;
-  final IconData icon;
-  final String route;
+class _LibraryCard extends StatelessWidget {
+  const _LibraryCard({required this.library});
 
-  const ModuleCard({
-    super.key,
-    required this.title,
-    required this.description,
-    required this.icon,
-    required this.route,
-  });
+  final StudioLibrary library;
 
   @override
   Widget build(BuildContext context) {
@@ -197,46 +149,40 @@ class ModuleCard extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(spacing.md),
         onTap: () {
-          Navigator.pushNamed(context, route);
+          Navigator.pushNamed(context, '/library/${library.id}');
         },
         child: Ink(
-          padding: EdgeInsets.symmetric(
-            horizontal: spacing.md,
-            vertical: spacing.md,
-          ),
+          padding: EdgeInsets.all(spacing.lg),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(spacing.md),
             color: colorScheme.surfaceContainerHighest,
+            borderRadius: BorderRadius.circular(spacing.md),
             border: Border.all(color: colorScheme.outlineVariant),
           ),
-          child: Row(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Icon(icon, size: spacing.lg * 1.1, color: colorScheme.primary),
-              SizedBox(width: spacing.md),
+              Icon(library.icon, size: 42, color: colorScheme.primary),
+              SizedBox(height: spacing.md),
+              Text(
+                library.name,
+                style: textTheme.titleLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: spacing.xs),
               Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    SizedBox(height: spacing.xs),
-                    Flexible(
-                      child: Text(
-                        description,
-                        style: textTheme.bodyMedium,
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
+                child: Text(
+                  library.description,
+                  style: textTheme.bodyMedium,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              Text(
+                '${library.systems.length} systems',
+                style: textTheme.labelLarge?.copyWith(
+                  color: colorScheme.primary,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ],
@@ -247,95 +193,16 @@ class ModuleCard extends StatelessWidget {
   }
 }
 
-class _ModuleDefinition {
-  final String title;
-  final String description;
-  final IconData icon;
-  final String route;
+class _EmptyLibraryMessage extends StatelessWidget {
+  const _EmptyLibraryMessage();
 
-  const _ModuleDefinition({
-    required this.title,
-    required this.description,
-    required this.icon,
-    required this.route,
-  });
+  @override
+  Widget build(BuildContext context) {
+    return const Card(
+      child: Padding(
+        padding: EdgeInsets.all(24),
+        child: Center(child: Text('No learning libraries are installed.')),
+      ),
+    );
+  }
 }
-
-const List<_ModuleDefinition> _modules = [
-  _ModuleDefinition(
-    title: 'Prevent Account Takeovers',
-    description:
-        'Learn how attackers break weak passwords and reuse stolen credentials.',
-    icon: Icons.lock,
-    route: '/password',
-  ),
-  _ModuleDefinition(
-    title: 'Protect Data with Encryption',
-    description: 'Understand how encryption protects private information.',
-    icon: Icons.key,
-    route: '/encryption',
-  ),
-  _ModuleDefinition(
-    title: 'Spot Phishing Attacks',
-    description:
-        'Recognize fake emails, malicious links, and credential theft attempts.',
-    icon: Icons.mark_email_read,
-    route: '/phishing',
-  ),
-  _ModuleDefinition(
-    title: 'Defeat Social Engineering',
-    description:
-        'Learn how attackers manipulate people to bypass technical defenses.',
-    icon: Icons.psychology,
-    route: '/social',
-  ),
-  _ModuleDefinition(
-    title: 'Understand Networks',
-    description:
-        'See how systems communicate and where attackers look for weakness.',
-    icon: Icons.hub,
-    route: '/networking',
-  ),
-  _ModuleDefinition(
-    title: 'OS and Application Holes',
-    description: 'Learn how software and operating system flaws are exploited.',
-    icon: Icons.warning_amber,
-    route: '/osappholes',
-  ),
-  _ModuleDefinition(
-    title: 'Exploits',
-    description: 'See how attackers turn vulnerabilities into real attacks.',
-    icon: Icons.bolt,
-    route: '/exploits',
-  ),
-  _ModuleDefinition(
-    title: 'Zero-Days',
-    description: 'Learn why unknown vulnerabilities are especially dangerous.',
-    icon: Icons.bug_report,
-    route: '/zero-days',
-  ),
-  _ModuleDefinition(
-    title: 'Patch Management',
-    description: 'Fix vulnerabilities before attackers exploit them.',
-    icon: Icons.system_update_alt,
-    route: '/patch',
-  ),
-  _ModuleDefinition(
-    title: 'System Hardening',
-    description: 'Reduce attack surface and lock systems down.',
-    icon: Icons.shield,
-    route: '/hardening',
-  ),
-  _ModuleDefinition(
-    title: 'Secure Coding',
-    description: 'Prevent vulnerabilities before software is released.',
-    icon: Icons.code,
-    route: '/secure',
-  ),
-  _ModuleDefinition(
-    title: 'Capstone Challenge',
-    description: 'Complete a full incident response simulation.',
-    icon: Icons.flag,
-    route: '/capstone',
-  ),
-];

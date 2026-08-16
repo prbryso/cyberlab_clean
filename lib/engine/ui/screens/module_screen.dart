@@ -11,9 +11,9 @@ import 'package:systems_studio/engine/ui/widgets/module/module_roadmap.dart';
 import 'package:systems_studio/engine/ui/widgets/perspective/perspective_selector.dart';
 
 class ModuleScreen extends StatefulWidget {
-  final LearningModule module;
-
   const ModuleScreen({super.key, required this.module});
+
+  final LearningModule module;
 
   @override
   State<ModuleScreen> createState() => _ModuleScreenState();
@@ -137,8 +137,8 @@ class _ModuleScreenState extends State<ModuleScreen> {
                     title: 'Module Roadmap',
                     icon: Icons.route_outlined,
                     subtitle:
-                        'Follow the lessons below to complete this learning '
-                        'module.',
+                        'Explore the lessons below in any order that supports '
+                        'your interests and goals.',
                     child: ModuleRoadmap(module: widget.module),
                   ),
                   SizedBox(height: spacing.xl),
@@ -153,9 +153,9 @@ class _ModuleScreenState extends State<ModuleScreen> {
 }
 
 class _ModuleHero extends StatelessWidget {
-  final LearningModule module;
-
   const _ModuleHero({required this.module});
+
+  final LearningModule module;
 
   @override
   Widget build(BuildContext context) {
@@ -212,6 +212,7 @@ class _ModuleHero extends StatelessWidget {
                 Wrap(
                   spacing: spacing.sm,
                   runSpacing: spacing.sm,
+                  crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
                     _HeroBadge(
                       icon: Icons.schedule_outlined,
@@ -220,6 +221,13 @@ class _ModuleHero extends StatelessWidget {
                     _HeroBadge(
                       icon: Icons.school_outlined,
                       label: module.difficulty,
+                    ),
+                    OutlinedButton.icon(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/password/system-map');
+                      },
+                      icon: const Icon(Icons.account_tree_outlined),
+                      label: const Text('System Map'),
                     ),
                   ],
                 ),
@@ -233,10 +241,10 @@ class _ModuleHero extends StatelessWidget {
 }
 
 class _HeroBadge extends StatelessWidget {
+  const _HeroBadge({required this.icon, required this.label});
+
   final IconData icon;
   final String label;
-
-  const _HeroBadge({required this.icon, required this.label});
 
   @override
   Widget build(BuildContext context) {

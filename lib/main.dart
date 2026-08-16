@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+
 import 'package:systems_studio/engine/core/routing/app_router.dart';
-import 'package:systems_studio/engine/services/studio_library_registry.dart';
 import 'package:systems_studio/engine/theme/theme.dart';
-import 'package:systems_studio/libraries/cyber_lab/cyber_lab_library.dart';
+import 'package:systems_studio/libraries/cyber_lab/cyber_lab_package.dart';
 
 void main() {
-  StudioLibraryRegistry.instance.register(const CyberLabLibrary());
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Install all Systems Studio content packages here.
+  const CyberLabPackage().install();
 
   runApp(const SystemsStudioApp());
 }

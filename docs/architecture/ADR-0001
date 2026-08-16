@@ -1,0 +1,22 @@
+ADR-0001
+
+Decision
+
+The Educational Registry shall own discovery of educational objects.
+
+Status
+
+Accepted
+
+Rationale
+
+Prevents hardcoded content.
+Supports unlimited domains.
+Supports incremental migration.
+
+Consequences
+
+Positive
+...
+Negative
+...

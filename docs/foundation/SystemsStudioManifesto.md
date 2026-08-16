@@ -1,3 +1,7 @@
+Under the System Studio logo, I'd use this tagline:
+Explore. Understand. Reason.
+
+
 # Systems Studio Manifesto
 
 # We Believe Learning Can Be Better
@@ -207,3 +211,43 @@ Organizations change society.
 Education is one of the most powerful forms of engineering.
 
 That is why Systems Studio exists.
+
+
+1. Exploration (Individual)
+Goal: Learn because you're curious.
+Examples:
+"How does encryption work?"
+"What is a zero-day?"
+"Show me the authentication system."
+"Let me experiment with password cracking."
+This is open, interactive, and non-linear.
+2. Education (Schools & Universities)
+Goal: Teach systems thinking.
+The instructor decides how to use the content.
+Examples:
+Homework assignments
+Classroom demonstrations
+Interactive labs
+Capstone projects
+Student discussions
+Engineering education
+The emphasis is not compliance—it's understanding.
+A professor might say:
+"Before Thursday, explore the Authentication System from the User, Attacker, and Defender perspectives. We'll discuss why each participant behaves differently."
+
+That's very different from corporate training.
+3. Classroom (Corporate Training)
+Goal: Deliver structured training.
+This is where organizations create courses such as:
+Annual Cybersecurity Awareness
+
+Lesson 1
+Password Security
+
+Lesson 2
+Encryption
+
+Lesson 3
+Phishing
+
+Final Assessment

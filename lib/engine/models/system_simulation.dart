@@ -1,11 +1,9 @@
 import 'package:systems_studio/engine/models/system_model.dart';
-import 'package:systems_studio/engine/ui/widgets/system/simulation_panel.dart';
-import 'package:systems_studio/engine/models/system_simulation.dart';
 
-/// Describes an executable simulation for a SystemModel.
+/// Describes an executable simulation for a [SystemModel].
 ///
 /// The UI is responsible for rendering these steps.
-/// This class only describes the behavior.
+/// This class describes simulation behavior without depending on Flutter UI.
 class SystemSimulation {
   const SystemSimulation({
     required this.id,
@@ -27,7 +25,7 @@ class SystemSimulation {
 /// One step in a simulation.
 ///
 /// A step typically highlights one node, displays narration,
-/// and optionally highlights a connection.
+/// and may highlight a connection.
 class SimulationStep {
   const SimulationStep({
     required this.nodeId,
@@ -43,21 +41,22 @@ class SimulationStep {
   /// Primary node involved in this step.
   final String nodeId;
 
-  /// Short title displayed above the narration.
+  /// Optional title displayed above the narration.
   final String? title;
 
   /// Explanation shown to the learner.
   final String narration;
 
-  /// Optional connection that should be highlighted.
+  /// Optional starting node for a highlighted connection.
   final String? fromNodeId;
 
+  /// Optional ending node for a highlighted connection.
   final String? toNodeId;
 
-  /// Suggested display time.
+  /// Suggested display duration.
   final Duration duration;
 
-  /// Importance of the event.
+  /// Importance or severity of the event.
   final SimulationLevel level;
 
   /// How this step should be rendered.
@@ -68,7 +67,7 @@ enum SimulationStepType { node, connection, success, failure, information }
 
 enum SimulationLevel { normal, warning, critical }
 
-/// Associates a SystemModel with its simulation.
+/// Associates a [SystemModel] with its simulation.
 class SimulatedSystem {
   const SimulatedSystem({required this.model, required this.simulation});
 

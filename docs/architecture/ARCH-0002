@@ -1,0 +1,51 @@
+                    EducationalRegistry
+                            │
+      ┌─────────────────────┼─────────────────────┐
+      │                     │                     │
+  Domains              Modules             Learning Paths
+      │                     │
+      │          ┌──────────┼──────────┐
+      │          │          │          │
+   Lessons   SystemModels Diagrams Simulations
+
+What domains exist?
+
+What modules belong to a domain?
+
+What lessons belong to a module?
+
+What systems exist?
+
+What simulations exist?
+
+What assessments exist?
+
+What diagrams exist?
+
+Where is this object used?
+
+
+
+File Structure:
+
+lib/
+
+engine/
+
+    registry/
+
+        educational_registry.dart
+
+        registry_item.dart
+
+        educational_domain.dart
+
+        learning_module.dart
+
+        learning_path.dart
+
+        lesson.dart
+
+        assessment.dart
+
+        reference.dart
